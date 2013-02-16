@@ -8,7 +8,24 @@
 </head>
 <body>
 
-<%= yield %>
+	<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#"><img src="assets/logo.png" alt="logo" /></a>
+					<div class="nav-collapse">
+						<form class="navbar-search pull-left">
+							<i class="icon-search sfont"></i><input type="text" class="search-query" placeholder="People or Places">
+						</form>
+				
+					</div><!--/.nav-collapse -->	
+				</div>
+			</div>
+	</div>
+	<div class="container">
+
+		<%= yield %>
+	
+	</div>
 
 </body>
 </html>

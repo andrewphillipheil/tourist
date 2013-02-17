@@ -23,7 +23,15 @@ class TripsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create trip" do
+  test "should be logged in to post a trip" do
+    post :create, trip: { content: "Hello" }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should create trip when logged in" do
+    sign_in users(:andrew)
+
     assert_difference('Trip.count') do
       post :create, trip: { content: @trip.content }
     end
@@ -36,13 +44,27 @@ class TripsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should redirect edit when not logged in" do
+    get :edit, id: @trip
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should get edit when logged in" do
+    sign_in users(:andrew)
     get :edit, id: @trip
     assert_response :success
   end
 
-  test "should update trip" do
-    put :update, id: @trip, trip: { content: @trip.content}
+  test "should redirect trip update when not logged in" do
+    put :update, id: @trip, trip: { content: @trip.content }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should update trip when logged in" do
+    sign_in users(:andrew)
+    put :update, id: @trip, trip: { content: @trip.content }
     assert_redirected_to trip_path(assigns(:trip))
   end
 
@@ -53,5 +75,4 @@ class TripsControllerTest < ActionController::TestCase
 
     assert_redirected_to trips_path
   end
-
 end

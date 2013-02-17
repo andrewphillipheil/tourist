@@ -11,17 +11,35 @@
 	<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="#"><img src="assets/logo.png" alt="logo" /></a>
+					<a class="brand" href="#"><img src="http://localhost:3000/assets/logo.png" alt="logo" /></a>
 					<div class="nav-collapse">
 						<form class="navbar-search pull-left">
 							<i class="icon-search sfont"></i><input type="text" class="search-query" placeholder="People or Places">
 						</form>
-				
+
+						<ul class="nav pull-right">
+							<% if user_signed_in? %>
+								<li>
+									<%= link_to current_user.full_name, edit_user_registration_path %>
+								</li>
+								<li>
+									<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+								</li>
+							<% else %>
+								<li>
+									<%= link_to "Register",  new_user_registration_path %>
+								</li>
+								<li>
+									<%= link_to "Login",  new_user_session_path %>
+								</li>
+							<% end %>
+						</ul>
 					</div><!--/.nav-collapse -->	
 				</div>
 			</div>
 	</div>
 	<div class="container">
+
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 		<%= yield %>

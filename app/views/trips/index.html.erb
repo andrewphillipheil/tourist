@@ -8,7 +8,7 @@
 
 <% @trips.each do |trip|  %>
 <div class="trips">
-  <strong><%= trip.name %></strong>
+  <strong><%= trip.user.full_name %> </strong>
   <p><%= trip.content %></p>
 
   <div class="meta">
@@ -22,4 +22,4 @@
   </div>
 </div>
 <% end %>
-<%= link_to 'New Trip', new_trip_path %>
+

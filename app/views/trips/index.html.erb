@@ -7,18 +7,25 @@
 
 
 <% @trips.each do |trip|  %>
-<div class="trips">
-  <strong><%= trip.user.full_name %> </strong>
-  <p><%= trip.content %></p>
+<div class="trip">
+  <div class="row">
+    <div class="span1">
+      <%= image_tag trip.user.gravatar_url %>
+    </div>
+    <div class="span7">
+      <strong><%= trip.user.full_name %> </strong>
+      <p><%= trip.content %></p>
 
-  <div class="meta">
-    
-    <%= link_to time_ago_in_words(trip.created_at) + " ago", trip %> 
+      <div class="meta">
+        
+        <%= link_to time_ago_in_words(trip.created_at) + " ago", trip %> 
 
-    <span class="admin">
-      | <%= link_to "Edit", edit_trip_path(trip) %> |
-      <%= link_to "Delete", trip, method: :delete, data: {confirm: "Are you sure you want to delete it?"} %>
-    </span>
+        <span class="admin">
+          | <%= link_to "Edit", edit_trip_path(trip) %> |
+          <%= link_to "Delete", trip, method: :delete, data: {confirm: "Are you sure you want to delete it?"} %>
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 <% end %>

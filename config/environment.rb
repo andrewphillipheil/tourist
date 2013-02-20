@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Tourist::Application.initialize!
+Touristapp1::Application.initialize!

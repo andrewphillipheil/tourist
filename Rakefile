@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Tourist::Application.load_tasks
+Touristapp1::Application.load_tasks
